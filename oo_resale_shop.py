@@ -63,20 +63,29 @@ class ResaleShop:
 
 def main():
     
-        # Print a little banner
+    # Prints a banner
     print("-" * 21)
     print("COMPUTER RESALE STORE")
     print("-" * 21)
     
     # initilizes shop from ResaleShop object 
-    shop = ResaleShop() 
+    shop = ResaleShop()
+    
     # test computer list, creates computer object 
     test_computer = Computer("2019 MacBook Pro", "Intel", 256, 16, "High Sierra", 2019, 1000) # makes test computer object
-    
+    test_computer2 = Computer("2010 MacBook Air", "Intel", 256, 8, "High Sierra", 2010, 400) # makes test computer object
+
     # buys computer 
     print("Buying", test_computer.description)
     print("Adding to inventory...")
     shop.buy(test_computer) # buys test_computer
+    print(f"Item added to inventory at Item ID {itemID}")
+    print("Done.\n")
+    
+    # buys another computer to test the item ID functionality
+    print("Buying", test_computer2.description)
+    print("Adding to inventory...")
+    shop.buy(test_computer2) # buys test_computer
     print(f"Item added to inventory at Item ID {itemID}")
     print("Done.\n")
     
@@ -86,28 +95,39 @@ def main():
     shop.print_inventory()
     print("Done.\n")
     
-    # Refurbushes computer 
+    # Refurbushes first computer 
         # Now, let's refurbish it
     new_OS = "MacOS Monterey"
-    print("Refurbishing Item ID:", itemID, ", updating OS to", new_OS)
+    comp1_ID = 1 # ItemID of computer 1 
+    # computer 1 has itemID 1 
+    print("Refurbishing Item ID:", comp1_ID , ", updating OS to", new_OS)
     print("Updating inventory...")
-    shop.refurbish(itemID, new_OS)
+    shop.refurbish(comp1_ID, new_OS)
     print("Done.\n")
     
-        # checks inventory 
-        # Make sure it worked by checking inventory
+    # checks inventory to make sure computer 1 has been refurbished
     print("Checking inventory...")
     shop.print_inventory()
     print("Done.\n")
     
-    # sells computer 
-    print("Selling Item ID:", itemID)
-    shop.sell(itemID)
+    # sells computer 1 
+    print("Selling Item ID:", comp1_ID) # ItemID = 1 for computer 1 
+    shop.sell(comp1_ID)
     
-            # checks inventory 
-        # Make sure it worked by checking inventory
+    # checks inventory -> should only see computer 2 
     print("Checking inventory...")
     shop.print_inventory()
     print("Done.\n")
+    
+    # now let's sell computer 2 
+    comp2_ID = 2
+    print("Selling Item ID:", comp2_ID) # ItemID = 1 for computer 1 
+    shop.sell(comp2_ID)
+    
+    # and let's print inventory, should raise warning that inventory is empty 
+    print("Checking inventory...")
+    shop.print_inventory()
+    print("Done.\n")
+    
 
 main()
