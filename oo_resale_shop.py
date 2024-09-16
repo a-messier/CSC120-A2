@@ -1,6 +1,6 @@
 from computer import Computer # imports computer class from computer.py
 
-global itemID # I tink this goes here?
+global itemID # sets itemID as global variable 
 itemID = 0 
 
 class ResaleShop:
